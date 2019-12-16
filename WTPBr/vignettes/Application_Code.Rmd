@@ -1,0 +1,64 @@
+---
+title: "Application Code - General Mixed Logit Result"
+output: html_notebook
+---
+
+## Preliminaries
+
+Load the packages used in this vignette:
+```{r setup}
+library(WTPBr)
+library(mlogit)
+```
+
+## Loading the data
+
+To load the data, use the function `data()`:
+```{r load-data}
+data("mixedlogit")
+```
+
+To inspect the dataframe, use the function `summary()`
+```{r summary-data}
+summary(mixedlogit)
+```
+
+The variable definitions can be consulted in the help file:
+```{r call-help}
+?mixedlogit
+```
+
+## Introduction
+
+In this data, the respondents with lexicographic behavior are excluded, which gives us a total of 2,859 individuals. But, the major change is in the data format. The questions of the game are reported in line, which associates 18 cells to each respondent (9 questions, 2 possibilities of answer). Also, the values of the stated preference analysis (cost, accident with death and time) are included. 
+
+Estimates for the **value of travel time savings and of risk of death reduction on roads travels** was obtained by applying the discrete choice model. This approach considers that each individual *n* has a set of alternatives, each having a series of associated characteristics ($x_{nj}$). Among the different class of models, we find the the **mixed logit model** more appropriate for modeling our choice data, since it allows the coefficients of the model to have variations between the individuals (For the methodology description of the model see the final paper: colocar link). Here, we are going to share the **code** of the **main results** of the paper. 
+
+
+## General Mixed Logit  
+
+In the application of mixed logit models three specifications are required: 1) select the variables that should be considered as random; 2) the choice of the statistical distribution for the random coefficients; and 3) determine the number of Halton draws for the simulation.
+
+We first approach a general model, considering only the game attributes as a random variables: cost, time and death. We used a zero-censored distribution and 500 Halton drawings in the simulation. In the following code, the first line (Hbasic) specifices our data to the model. The second line it is the application of the mixed logit model. The random parameters are described in the 'rpar' argument. Also, along with each variable we chose the distribution. In our case `cn` for the zero-censored distribution. This can be change for the use of: normal (`n`), log-normal (`ln`), uniform (`u`) and triangular (`t`) distributions, available in the package. `R` is the number of draws, `halton` indicates whether halton draws
+should be used (`NA` and `NULL` indicate respectively that default halton draws are used and that pseudo-random
+numbers are used), `panel` is a boolean which indicates if the panel data version of the log-likelihood should be used.
+
+
+```{r cache = TRUE}
+Hbasic <- mlogit.data(mixedlogit, shape="long", choice="choice", alt.var = "rota", id="id", opposite = c('custo','morte', 'tempo'))
+
+mxl.basic500<- mlogit(choice~custo+morte+tempo, Hbasic, rpar=c(custo='cn', morte='cn', tempo='cn'), R=500, halton=NA, print.level=0, panel=TRUE)
+summary(mxl.basic500)
+```
+
+In order to get WTP values we just need to divide the coefficients by the cost: 
+
+```{r}
+coef(mxl.basic500)["morte"]/coef(mxl.basic500)["custo"]
+coef(mxl.basic500)["tempo"]/coef(mxl.basic500)["custo"] 
+```
+
+The results are presented in Table 1 in the Short version of the Paper. 
+
+
+

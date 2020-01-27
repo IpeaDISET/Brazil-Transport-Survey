@@ -2,7 +2,9 @@
 Repository includes manuscript and data files of the research: 
 **Estimating the value of travel time saving and statistical life in road travels in Brazil**
 
-Tatiana Ferrari, Luiza Dusi, Fabiano Pompemayer
+Full paper in: http://www.ipea.gov.br/portal/index.php?option=com_content&view=article&id=35264&Itemid=444
+
+Tatiana Ferrari, Luiza Dusi, Fabiano Pompermayer
 
 IPEA - Instituto of Applied Economic Research. Setor Bancario Sul, Quadra 1, Edificio BNDES, Brasilia, DF, Brazil
 

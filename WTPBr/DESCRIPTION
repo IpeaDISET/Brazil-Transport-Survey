@@ -8,7 +8,7 @@ Description: This package was created to share data and demostrate the applicati
     for the estimation of the value of Statistical Life (VSL) and the Value of Travel Time Saving (VTTS). The data is based on a Survey with road passengers in Brazil, conducted by the Institute of Applied Economic Research in 2017. 
      For detailed information and results discussion see: 
      FERRARI, T.; DUSI, L.; LOPES, D.;POMPEMAYER, F. Estimativa do valor da vida estatística e valor da economia de tempo em viagens nas rodovias brasileiras
-     com a utilização de pesquisa de preferência declarada. Brasilia: IPEA, 2019. (Texto para Discussão). No prelo.
+     com a utilização de pesquisa de preferência declarada. Brasilia: IPEA, 2019. (Texto para Discussão). 
 License: CC0
 Encoding: UTF-8
 LazyData: true

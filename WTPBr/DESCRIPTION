@@ -2,7 +2,7 @@ Package: WTPBr
 Type: Package
 Title: Brazil road travel Survey - VTTS and VSL estimation
 Version: 0.1.0
-Author: Tatiana Ferrari, Luiza Dusi, Fabiano Pompemayer
+Author: Tatiana Ferrari, Luiza Dusi, Fabiano Pompermayer
 Maintainer: Tatiana Ferrari <tatianak.ferrari@gmail.com>
 Description: This package was created to share data and demostrate the application of the Mixed Logit Model, a Discrete Choice model analysis, 
     for the estimation of the value of Statistical Life (VSL) and the Value of Travel Time Saving (VTTS). The data is based on a Survey with road passengers in Brazil, conducted by the Institute of Applied Economic Research in 2017. 
